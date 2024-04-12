@@ -23,13 +23,13 @@ from diffusers.utils import check_min_version
 from diffusers.utils.import_utils import is_xformers_available
 from transformers import CLIPTextModel, CLIPTokenizer, CLIPImageProcessor
 
-from pipelines.pipeline_seesr import StableDiffusionControlNetPipeline
-from utils.misc import load_dreambooth_lora
-from utils.wavelet_color_fix import wavelet_color_fix, adain_color_fix
+from seesr.pipelines.pipeline_seesr import StableDiffusionControlNetPipeline
+from seesr.utils.misc import load_dreambooth_lora
+from seesr.utils.wavelet_color_fix import wavelet_color_fix, adain_color_fix
 
-from ram.models.ram_lora import ram
-from ram import inference_ram as inference
-from ram import get_transform
+from seesr.ram.models.ram_lora import ram
+from seesr.ram import inference_ram as inference
+from seesr.ram import get_transform
 
 from typing import Mapping, Any
 from torchvision import transforms
@@ -70,8 +70,8 @@ def load_state_dict_diffbirSwinIR(model: nn.Module, state_dict: Mapping[str, Any
 
 def load_seesr_pipeline(args, accelerator, enable_xformers_memory_efficient_attention):
     
-    from models.controlnet import ControlNetModel
-    from models.unet_2d_condition import UNet2DConditionModel
+    from seesr.models.controlnet import ControlNetModel
+    from seesr.models.unet_2d_condition import UNet2DConditionModel
 
     # Load scheduler, tokenizer and models.
     

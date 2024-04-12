@@ -36,13 +36,13 @@ from diffusers import (
     StableDiffusionControlNetPipeline,
     UniPCMultistepScheduler,
 )
-from models.controlnet import ControlNetModel
-from models.unet_2d_condition import UNet2DConditionModel
+from seesr.models.controlnet import ControlNetModel
+from seesr.models.unet_2d_condition import UNet2DConditionModel
 from diffusers.optimization import get_scheduler
 from diffusers.utils import check_min_version, is_wandb_available
 from diffusers.utils.import_utils import is_xformers_available
 
-from dataloaders.paired_dataset import PairedCaptionDataset
+from seesr.dataloaders.paired_dataset import PairedCaptionDataset
 
 from typing import Mapping, Any
 from torchvision import transforms
@@ -756,8 +756,8 @@ for name, module in unet.named_modules():
             params.requires_grad = True
 
 ## init the RAM or DAPE model
-from ram.models.ram_lora import ram
-from ram import get_transform
+from seesr.ram.models.ram_lora import ram
+from seesr.ram import get_transform
 if args.ram_ft_path is None:
     print("======== USE Original RAM ========")
 else:
