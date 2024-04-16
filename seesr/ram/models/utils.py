@@ -11,7 +11,7 @@ from timm.models.hub import download_cached_file
 from .vit import interpolate_pos_embed
 from .swin_transformer import interpolate_relative_pos_embed
 from pathlib import Path
-CONFIG_PATH=(Path(__file__).resolve().parents[1])
+CONFIG_PATH=Path.cwd()
 
 def read_json(rpath):
     with open(rpath, 'r') as f:
